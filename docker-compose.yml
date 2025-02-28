@@ -1,0 +1,9 @@
+---
+services:
+  valo-spectra-frontend:
+    image: valospectra/overlay
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"

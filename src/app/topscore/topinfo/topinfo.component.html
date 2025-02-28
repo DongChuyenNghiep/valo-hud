@@ -1,0 +1,46 @@
+<div class="topinfo-container" *ngIf="match.tools.seriesInfo.mapInfo.length > 0">
+  <div class="topinfo-pill">
+    <app-mapinfo [map]="match.map" [mapinfo]="match.tools.seriesInfo.mapInfo[0]"></app-mapinfo>
+  </div>
+  <div class="topinfo-pill">
+    <app-mapinfo [map]="match.map" [mapinfo]="match.tools.seriesInfo.mapInfo[1]"></app-mapinfo>
+  </div>
+  <div class="topinfo-pill">
+    <app-mapinfo [map]="match.map" [mapinfo]="match.tools.seriesInfo.mapInfo[2]"></app-mapinfo>
+  </div>
+</div>
+<div class="topinfo-container-right">
+  <div class="topinfo-pill-flex">
+    <img src="assets/misc/icon.webp" alt="Underpeel Logo" class="spectra-logo" />
+    <div class="topinfo-pill-text fadeLoopStart">Overlay by Spectra</div>
+    <div class="topinfo-pill-text fadeLoopDelay">valospectra.com</div>
+  </div>
+</div>
+<div class="sponsor-container" *ngIf="sponsorsAvailable">
+  <ng-container *ngFor="let sponsor of sponsorImages; let i = index">
+    <img
+      *ngIf="i === currentSponsorIndex"
+      class="sponsor-logo"
+      [@fadeInOut]
+      [src]="sponsor"
+      alt="Sponsor Logo"
+    />
+  </ng-container>
+</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+  <symbol
+    id="aperture"
+    fill="none"
+    stroke="white"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    stroke-width="2"
+    viewBox="0 0 24 24"
+  >
+    <circle cx="12" cy="12" r="10" />
+    <path
+      d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94"
+    />
+  </symbol>
+</svg>
