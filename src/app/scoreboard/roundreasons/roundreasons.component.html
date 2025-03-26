@@ -1,6 +1,7 @@
 <div class="round-reasons-container" *ngIf="match.teams[0].roundRecord.length > 0">
   <div class="left-team">
-    <div class="team-info">
+    <div class="team-info" style="display: flex; flex-direction: row; align-items: center; justify-content: center; column-gap:5px">
+      <img src="{{ match.teams[0].teamUrl }}" height="30px" />
       {{ match.teams[0].teamTricode }}
     </div>
     <div class="reason-container">
@@ -33,7 +34,8 @@
   </div>
 
   <div class="right-team">
-    <div class="team-info">
+    <div class="team-info" style="display: flex; flex-direction: row; align-items: center; justify-content: center; column-gap:5px">
+      <img src="{{ match.teams[1].teamUrl }}" height="30px" />
       {{ match.teams[1].teamTricode }}
     </div>
     <div class="reason-container">

@@ -96,13 +96,14 @@
   animation: fadeLoop 60s normal infinite;
   animation-delay: 0s;
   position: absolute;
-  left: 20%;
+  display: flex;
+  justify-content: center;
 }
 
 .fadeLoopDelay {
   animation: fadeLoop 60s normal infinite;
   animation-delay: -30s;
   position: absolute;
-  left: 25%;
-  opacity: 0;
+  display: flex;
+  justify-content: center;
 }

@@ -9,7 +9,7 @@ export class EndroundComponent implements OnChanges, OnInit {
   tournamentUrl = "../../assets/misc/logo.webp";
   endRoundEnabled = false;
 
-  tournamentBackgroundUrl = "../../assets/misc/backdrop.webp";
+  tournamentBackgroundUrl = "../../assets/misc/backdropcopy.webp";
 
   teamWon = 0;
   ngOnInit(): void {
@@ -25,7 +25,7 @@ export class EndroundComponent implements OnChanges, OnInit {
       this.match?.tools?.tournamentInfo?.backdropUrl &&
       this.match.tools.tournamentInfo.backdropUrl !== ""
         ? this.match.tools.tournamentInfo.backdropUrl
-        : "../../assets/misc/backdrop.webp";
+        : "../../assets/misc/backdropcopy.webp";
 
     this.preloadImage(this.tournamentUrl);
     this.preloadImage(this.tournamentBackgroundUrl);

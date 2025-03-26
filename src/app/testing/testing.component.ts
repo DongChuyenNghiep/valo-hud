@@ -1,6 +1,5 @@
-import { AfterViewInit, Component, ViewChild, ViewContainerRef } from "@angular/core";
+import { AfterViewInit, Component, ViewChild } from "@angular/core";
 import { TrackerComponent } from "../tracker/tracker.component";
-import { SocketService } from "../services/SocketService";
 import { ActivatedRoute } from "@angular/router";
 import { TeamControllerComponent } from "./team-controller/team-controller.component";
 
@@ -13,25 +12,20 @@ export class TestingComponent implements AfterViewInit {
   @ViewChild(TrackerComponent) trackerComponent!: TrackerComponent;
   @ViewChild("team1") team1!: TeamControllerComponent;
   @ViewChild("team2") team2!: TeamControllerComponent;
-  groupCode = "UNKNOWN";
-  socketService!: SocketService;
-
   matchData: any;
   isSpikePlanted = false;
   roundPhase: "shopping" | "combat" | "end" = "combat";
+  hideAuxiliary = false;
 
   showInterface = true;
   showBackground = true;
   backgroundClass = "bg1";
   backgroundClassId = 1;
 
-  constructor(
-    private route: ActivatedRoute,
-    private viewContainerRef: ViewContainerRef,
-  ) {
+   constructor(private route: ActivatedRoute) {
     this.route.queryParams.subscribe((params) => {
-      this.groupCode = params["groupCode"]?.toUpperCase() || "UNKNOWN";
-      console.log(`Requested group code is ${this.groupCode}`);
+      this.hideAuxiliary = params["hideAuxiliary"] != undefined;
+       console.log(`hideAuxiliary is ${this.hideAuxiliary}`);
     });
   }
 
@@ -72,6 +66,7 @@ export class TestingComponent implements AfterViewInit {
       { type: "lost", wasAttack: true, round: 8 },
       { type: "kills", wasAttack: true, round: 9 },
       { type: "timeout", wasAttack: true, round: 10 },
+      
     ];
 
     this.matchData.tools = {
@@ -80,20 +75,14 @@ export class TestingComponent implements AfterViewInit {
         wonLeft: 1,
         wonRight: 2,
         mapInfo: [
-          {
-            type: "past",
-            map: "Fracture",
-            left: {
-              score: 13,
-              logo: "assets/misc/icon.webp",
-            },
-            right: {
-              score: 9,
-              logo: "assets/misc/icon.webp",
-            },
-          },
+          
           {
             type: "present",
+            logo: "assets/misc/icon.webp",
+          },
+          {
+            type: "future",
+            map: "Fracture",
             logo: "assets/misc/icon.webp",
           },
           {

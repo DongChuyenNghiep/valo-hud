@@ -1,19 +1,12 @@
 <div class="topinfo-container" *ngIf="match.tools.seriesInfo.mapInfo.length > 0">
-  <div class="topinfo-pill">
-    <app-mapinfo [map]="match.map" [mapinfo]="match.tools.seriesInfo.mapInfo[0]"></app-mapinfo>
-  </div>
-  <div class="topinfo-pill">
-    <app-mapinfo [map]="match.map" [mapinfo]="match.tools.seriesInfo.mapInfo[1]"></app-mapinfo>
-  </div>
-  <div class="topinfo-pill">
-    <app-mapinfo [map]="match.map" [mapinfo]="match.tools.seriesInfo.mapInfo[2]"></app-mapinfo>
+  <div class="topinfo-pill" *ngFor="let map of match.tools.seriesInfo.mapInfo; let i = index">
+    <app-mapinfo [map]="match.map" [mapinfo]="map" [index]="i"></app-mapinfo>
   </div>
 </div>
 <div class="topinfo-container-right">
   <div class="topinfo-pill-flex">
-    <img src="assets/misc/icon.webp" alt="Underpeel Logo" class="spectra-logo" />
-    <div class="topinfo-pill-text fadeLoopStart">Overlay by Spectra</div>
-    <div class="topinfo-pill-text fadeLoopDelay">valospectra.com</div>
+    <div class="topinfo-pill-text fadeLoopStart">2025 QUALIFIERS • STAGE A</div>
+    <div class="topinfo-pill-text fadeLoopDelay">First to 2</div>
   </div>
 </div>
 <div class="sponsor-container" *ngIf="sponsorsAvailable">

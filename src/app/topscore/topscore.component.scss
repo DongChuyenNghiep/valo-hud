@@ -1,9 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3&display=swap");
 .topscore {
   position: absolute;
   width: 601px;
   height: 143px;
-  top: 4px;
-  left: 660px;
+  top: -1px;
+  left: 659px;
 }
 
 .topscore-container {
@@ -15,146 +17,16 @@
   top: 5px;
   left: 0;
 }
-
-.scoreboard {
-  display: inline-flex;
-  height: 62.76px;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 168.97px;
-  position: relative;
-  // box-shadow: -1px 1px 1px #0000001f; This currently creates a weird shadow between the two scoreblocks
-}
-
-.teamcard {
-  display: flex;
-  width: 216px;
-  align-items: center;
-  position: relative;
-}
-
-.teamcard-border {
-  @extend .teamcard;
-  height: 62.76px;
-  overflow: hidden;
-  border-radius: 8px;
-}
-
-.teaminfo-container {
+.round-numberBox {
+  position: absolute;
+  top: 4%;
+  left: 42%;
+  width: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  flex: 1;
-  align-self: stretch;
-  flex-grow: 1;
-  background-color: #0f1923d9;
 }
-
-.teamimage-container {
-  width: 40%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.team-image {
-  position: relative;
-  max-width: 80%;
-  max-height: 80%;
-}
-
-.teamname-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  max-width: 60%;
-  overflow: hidden;
-}
-
-.teamcode {
-  font-family: Unbounded, Helvetica;
-  font-weight: 800;
-  color: #ffffff;
-  font-size: 20px;
-  font-style: normal;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: -0.48px;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.teamseeding {
-  font-family: "Montserrat", Helvetica;
-  font-weight: 800;
-  color: #ffffff99;
-  font-size: 10px;
-  font-style: normal;
-  text-align: center;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.divider {
-  position: relative;
-  align-self: stretch;
-  width: 3.62px;
-  &.defender {
-    @extend .divider;
-    background-color: var(--defender-color-secondary);
-  }
-  &.attacker {
-    @extend .divider;
-    background-color: var(--attacker-color-secondary);
-  }
-}
-
-.scoreblock {
-  display: flex;
-  flex-direction: column;
-  width: 70px;
-  align-items: center;
-  justify-content: center;
-  gap: 12.07px;
-  position: relative;
-  align-self: stretch;
-  border: 0px none;
-  &-left {
-    @extend .scoreblock;
-    border-radius: 0px 4px 4px 0px;
-  }
-  &-right {
-    @extend .scoreblock;
-    border-radius: 4px 0px 0px 4px;
-  }
-  &.defender {
-    @extend .scoreblock;
-    background-color: var(--defender-color);
-  }
-  &.attacker {
-    @extend .scoreblock;
-    background-color: var(--attacker-color);
-  }
-}
-
-.score-text {
-  position: relative;
-  width: fit-content;
-  text-shadow: 0px 1.21px 4.83px rgba(0, 0, 0, 0.12);
-  font-family: "Montserrat", Helvetica;
-  font-weight: 700;
-  color: #ffffff;
-  font-size: 40px;
-  font-style: normal;
-  text-align: center;
-  // letter-spacing: 1.2px;
-  line-height: normal;
-}
-
 .round-number {
-  font-family: "Unbounded-Bold", Helvetica;
   font-weight: 700;
   color: #fefeff99;
   font-size: 15px;
@@ -162,14 +34,30 @@
   letter-spacing: 0.39px;
   line-height: normal;
 }
-
+.top-score-box,
+.top-score-box * {
+  box-sizing: border-box;
+}
+.top-score-box {
+  height: 157px;
+  position: relative;
+}
+.top-score {
+  width: 650px;
+  height: 200px;
+  position: absolute;
+  left: -26px;
+  top: -13px;
+  overflow: hidden;
+}
 .spike-indicator {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  position: relative;
-  top: -58px;
+  position: absolute;
+  top: 22px;
   flex: 0 0 auto;
+  left: 274px;
 }
 
 .spike-icon {
@@ -181,33 +69,346 @@
   margin-left: -8px;
   margin-right: -8px;
 }
-
-.mapwin-line {
-  display: inline-flex;
-  justify-content: center;
-  gap: 5px;
+.team-card-bg-left {
+  width: 34.35%;
+  height: 38.22%;
   position: absolute;
-  top: 110%;
-  min-width: 32%;
-  &-left {
-    @extend .mapwin-line;
-    right: 0;
+  right: 0.19%;
+  left: 65.45%;
+  bottom: 53.5%;
+  top: 8.28%;
+  overflow: visible;
+}
+.team-card-bg-right {
+  width: 34.36%;
+  height: 38.22%;
+  position: absolute;
+  right: 65.44%;
+  left: 0.19%;
+  bottom: 53.5%;
+  top: 8.28%;
+  overflow: visible;
+}
+.scoreblock-left {
+  width: 11.01%;
+  height: 38.22%;
+  position: absolute;
+  right: 65.45%;
+  left: 23.54%;
+  bottom: 53.5%;
+  top: 8.28%;
+  overflow: visible;
+}
+.vector4 {
+  width: 27.92%;
+  height: 14.01%;
+  position: absolute;
+  right: 36.04%;
+  left: 36.04%;
+  bottom: 43.31%;
+  top: 38.9%;
+  overflow: visible;
+}
+.vector5 {
+  width: 0.97%;
+  height: 0.64%;
+  position: absolute;
+  right: 95.94%;
+  left: 3.08%;
+  bottom: 94.27%;
+  top: 8.7%;
+  overflow: visible;
+}
+.vector6 {
+  width: 24.68%;
+  height: 0.64%;
+  position: absolute;
+  right: 71.27%;
+  left: 4.06%;
+  bottom: 94.27%;
+  top: 8.7%;
+  overflow: visible;
+}
+.vector7 {
+  width: 0.97%;
+  height: 0.64%;
+  position: absolute;
+  right: 70.29%;
+  left: 28.73%;
+  bottom: 94.27%;
+  top: 8.7%;
+  overflow: visible;
+}
+.vector8 {
+  width: 0.97%;
+  height: 0.64%;
+  position: absolute;
+  right: 28.73%;
+  left: 70.29%;
+  bottom: 94.27%;
+  top: 8.7%;
+  overflow: visible;
+}
+.vector9 {
+  width: 24.68%;
+  height: 0.64%;
+  position: absolute;
+  right: 4.06%;
+  left: 71.27%;
+  bottom: 94.27%;
+  top: 8.7%;
+  overflow: visible;
+}
+.vector10 {
+  width: 0.97%;
+  height: 0.64%;
+  position: absolute;
+  right: 3.08%;
+  left: 95.94%;
+  bottom: 94.27%;
+  top: 8.7%;
+  overflow: visible;
+}
+.spike-side {
+  width: 1.62%;
+  height: 7.64%;
+  position: absolute;
+  bottom: 22.93%;
+  top: 69.43%;
+  overflow: visible;
+  &.spike-left {
+    @extend .spike-side;
+    right: 56.01%;
+    left: 42.37%;
   }
-  &-right {
-    @extend .mapwin-line;
-    left: 0;
+  &.spike-right {
+    @extend .spike-side;
+    right: 42.37%;
+    left: 56.01%;
+    transform: rotate(180deg);
+  }
+}
+.spike {
+  width: 8.28%;
+  height: 29.78%;
+  position: absolute;
+  right: 45.86%;
+  left: 45.86%;
+  bottom: 10.51%;
+  top: 59.71%;
+  overflow: visible;
+}
+.vector11 {
+  width: 37.99%;
+  height: 51.59%;
+  position: absolute;
+  right: 31.01%;
+  left: 31.01%;
+  bottom: 43.31%;
+  top: 4.7%;
+  overflow: visible;
+}
+.scoreblock-right {
+  width: 11.01%;
+  height: 38.22%;
+  position: absolute;
+  right: 23.54%;
+  left: 65.45%;
+  bottom: 53.5%;
+  top: 8.28%;
+  overflow: visible;
+}
+.stoke-right {
+  width: 0.65%;
+  height: 38.22%;
+  position: absolute;
+  right: 22.89%;
+  left: 76.46%;
+  bottom: 53.5%;
+  top: 8.28%;
+  overflow: visible;
+}
+.stoke-left {
+  width: 0.65%;
+  height: 38.22%;
+  position: absolute;
+  right: 76.46%;
+  left: 22.89%;
+  bottom: 53.5%;
+  top: 8.28%;
+  overflow: visible;
+}
+.vector15 {
+  width: 57.31%;
+  height: 56.19%;
+  position: absolute;
+  right: 21.5%;
+  left: 21.5%;
+  bottom: 43.81%;
+  top: -0.3%;
+  overflow: visible;
+}
+
+.score-text {
+  position: relative;
+  width: fit-content;
+  text-shadow: 0px 1.21px 4.83px rgba(0, 0, 0, 0.12);
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 40px;
+  font-style: normal;
+  text-align: center;
+  &-0 {
+    @extend .score-text;
+    top: 0px;
+    left: 0px;
+  }
+  &-1 {
+    @extend .score-text;
+    top: 0px;
+    left: 0px;
+  }
+  // letter-spacing: 1.2px;
+  line-height: normal;
+}
+
+.team-imageBox {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  max-width: 40px;
+  max-height: 40px;
+  &-0 {
+    @extend .team-imageBox;
+    top: 35px;
+    left: 20px;
+  }
+  &-1 {
+    @extend .team-imageBox;
+    top: 35px;
+    left: 590px;
   }
 }
 
+.team-image {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  &-0 {
+    @extend .team-image;
+    top: 0px;
+    left: 0px;
+  }
+  &-1 {
+    @extend .team-image;
+    top: 0px;
+    left: 0px;
+  }
+}
+
+.teamcode {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  font-weight: 800;
+  color: #ffffff;
+  font-size: 24px;
+  font-style: normal;
+  text-align: center;
+  letter-spacing: -0.48px;
+  &-0 {
+    @extend .teamcode;
+    top: 0px;
+    left: 0px;
+  }
+  &-1 {
+    @extend .teamcode;
+    top: 0px;
+    left: 0px;
+  }
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.flip {
+  transform: rotate(180deg);
+}
+
+.teamcodeBox {
+  position: absolute;
+  width: 50px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  &-0 {
+    @extend .teamcodeBox;
+    top: 28px;
+    left: 80px;
+  }
+  &-1 {
+    @extend .teamcodeBox;
+    top: 28px;
+    left: 525px;
+  }
+}
+
+.teamscoreBox {
+  position: absolute;
+  width: 50px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &-0 {
+    @extend .teamscoreBox;
+    top: 39.5px;
+    left: 158px;
+  }
+  &-1 {
+    @extend .teamscoreBox;
+    top: 39.5px;
+    left: 440px;
+  }
+}
+
+.teamseeding {
+  position: relative;
+  width: fit-content;
+  margin-top: -3px;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  color: #ffffff99;
+  font-size: 12px;
+  font-style: normal;
+  text-align: center;
+  line-height: normal;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+
+.mapwin-pip-box {
+  position: relative;
+  top: 47%;
+  display: flex;
+}
 .mapwin-pip {
   position: relative;
-  width: 14px;
-  height: 7px;
-  border-radius: 3px;
-  border: 1.75px solid;
-  border-color: #ffffffaa;
-  &-full {
+  width: 65px;
+  display: flex;
+  column-gap: 4px;
+  &-left {
     @extend .mapwin-pip;
-    background-color: #ffffff;
+    left: 21%;
+    flex-direction: row-reverse;
+  }
+  &-right {
+    @extend .mapwin-pip;
+    left: 59%;
+    flex-direction: row;
   }
 }

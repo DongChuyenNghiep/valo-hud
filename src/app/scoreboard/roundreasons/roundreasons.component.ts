@@ -12,10 +12,12 @@ interface matchType {
   teams: [
     {
       teamTricode: string;
+      teamUrl: string;
       roundRecord: recordType[];
     },
     {
       teamTricode: string;
+      teamUrl: string;
       roundRecord: recordType[];
     },
   ];

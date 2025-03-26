@@ -1,73 +1,143 @@
 <div class="topscore">
   <div class="topscore-container">
-    <div class="scoreboard">
-      <div class="teamcard">
-        <div class="teamcard-border">
-          <div class="teaminfo-container">
-            <div class="teamimage-container">
-              <img class="team-image" src="{{ match.teams[0].teamUrl }}" />
-            </div>
-            <div class="teamname-container">
-              <div class="teamcode">{{ match.teams[0].teamTricode }}</div>
-              <div class="teamseeding">
-                {{ match.tools.seedingInfo.left }}
-              </div>
-            </div>
-          </div>
-          <div class="divider" [class]="match.teams[0].isAttacking ? 'attacker' : 'defender'"></div>
-          <div
-            class="scoreblock-left"
-            [class]="match.teams[0].isAttacking ? 'attacker' : 'defender'"
-          >
-            <div class="score-text">{{ match.teams[0].roundsWon }}</div>
-          </div>
+    <div class="top-score-box">
+      <div class="top-score">
+        <div>
+          <img class="team-card-bg-left" src="/assets/topscore/teamCardBg.svg" />
+          <img class="team-card-bg-right" src="/assets/topscore/teamCardBg.svg" />
         </div>
-        <div class="mapwin-line-left" *ngIf="match.tools.seriesInfo.needed > 1">
-          <div
-            class="mapwin-pip-full"
-            *ngFor="let i of numSequence(match.tools.seriesInfo.wonLeft)"
-          ></div>
-          <div
-            class="mapwin-pip"
-            *ngFor="
-              let i of numSequence(match.tools.seriesInfo.needed - match.tools.seriesInfo.wonLeft)
-            "
-          ></div>
-        </div>
-      </div>
-
-      <div class="teamcard">
-        <div class="teamcard-border">
-          <div
-            class="scoreblock-right"
-            [class]="match.teams[1].isAttacking ? 'attacker' : 'defender'"
-          >
-            <div class="score-text">{{ match.teams[1].roundsWon }}</div>
-          </div>
-          <div class="divider" [class]="match.teams[1].isAttacking ? 'attacker' : 'defender'"></div>
-          <div class="teaminfo-container">
-            <div class="teamname-container">
-              <div class="teamcode">{{ match.teams[1].teamTricode }}</div>
-              <div class="teamseeding">
+        <div>
+          <div>
+            <img
+              class="scoreblock-left"
+              [src]="
+                match.teams[1].isAttacking
+                  ? '/assets/topscore/green.svg'
+                  : '/assets/topscore/red.svg'
+              "
+            />
+            <img
+              class="stoke-left"
+              [src]="
+                match.teams[1].isAttacking
+                  ? '/assets/topscore/greenStroke.svg'
+                  : '/assets/topscore/redStroke.svg'
+              "
+            />
+            <div class="team-imageBox-0">
+              <img class="team-image-0" src="{{ match.teams[0].teamUrl }}" />
+            </div>
+            <div class="teamcodeBox-0">
+              <div class="teamcode-0">{{ match.teams[0].teamTricode }}</div>
+              <div class="teamseeding" *ngIf="match.tools.seedingInfo.left !== ''">
                 {{ match.tools.seedingInfo.right }}
               </div>
             </div>
-            <div class="teamimage-container">
-              <img class="team-image" src="{{ match.teams[1].teamUrl }}" />
+            <div class="teamscoreBox-0">
+              <div class="score-text-0">{{ match.teams[0].roundsWon }}</div>
+            </div>
+          </div>
+          <div>
+            <img
+              class="scoreblock-right flip"
+              [src]="
+                match.teams[0].isAttacking
+                  ? '/assets/topscore/green.svg'
+                  : '/assets/topscore/red.svg'
+              "
+            />
+            <img
+              class="stoke-right"
+              [src]="
+                match.teams[0].isAttacking
+                  ? '/assets/topscore/greenStroke.svg'
+                  : '/assets/topscore/redStroke.svg'
+              "
+            />
+            <div class="team-imageBox-1">
+              <img class="team-image-1" src="{{ match.teams[1].teamUrl }}" />
+            </div>
+            <div class="teamcodeBox-1">
+              <div class="teamcode-1">{{ match.teams[1].teamTricode }}</div>
+              <div class="teamseeding" *ngIf="match.tools.seedingInfo.left !== ''">
+                {{ match.tools.seedingInfo.left }}
+              </div>
+            </div>
+            <div class="teamscoreBox-1">
+              <div class="score-text-1">{{ match.teams[1].roundsWon }}</div>
             </div>
           </div>
         </div>
-        <div class="mapwin-line-right" *ngIf="match.tools.seriesInfo.needed > 1">
-          <div
-            class="mapwin-pip-full"
-            *ngFor="let i of numSequence(match.tools.seriesInfo.wonRight)"
-          ></div>
-          <div
-            class="mapwin-pip"
-            *ngFor="
-              let i of numSequence(match.tools.seriesInfo.needed - match.tools.seriesInfo.wonRight)
+        <div class="mapwin-pip-box" *ngIf="match.tools.seriesInfo.needed > 1">
+          <div class="mapwin-pip-left">
+            <img
+              [src]="
+                match.tools.seriesInfo.wonLeft >= 1
+                  ? '/assets/topscore/whiteMark.svg'
+                  : '/assets/topscore/blankMark.svg'
+              "
+            />
+            <img
+              [src]="
+                match.tools.seriesInfo.wonLeft >= 2
+                  ? '/assets/topscore/whiteMark.svg'
+                  : '/assets/topscore/blankMark.svg'
+              "
+            />
+            <img
+              *ngIf="match.tools.seriesInfo.needed === 3"
+              src="/assets/topscore/blankMark.svg"
+            />
+          </div>
+          <div class="mapwin-pip-right">
+            <img
+              [src]="
+                match.tools.seriesInfo.wonRight >= 1
+                  ? '/assets/topscore/whiteMark.svg'
+                  : '/assets/topscore/blankMark.svg'
+              "
+            />
+            <img
+              [src]="
+                match.tools.seriesInfo.wonRight >= 2
+                  ? '/assets/topscore/whiteMark.svg'
+                  : '/assets/topscore/blankMark.svg'
+              "
+            />
+            <img
+              *ngIf="match.tools.seriesInfo.needed === 3"
+              src="/assets/topscore/blankMark.svg"
+            />
+          </div>
+        </div>
+        <div class="graphics">
+          <!-- Graphics section -->
+          <img class="vector4" src="/assets/topscore/overlay2.svg" />
+          <img class="vector5" src="/assets/topscore/overlay3.svg" />
+          <img class="vector6" src="/assets/topscore/overlay4.svg" />
+          <img class="vector7" src="/assets/topscore/overlay3.svg" />
+          <img class="vector8" src="/assets/topscore/overlay3.svg" />
+          <img class="vector9" src="/assets/topscore/overlay4.svg" />
+          <img class="vector10" src="/assets/topscore/overlay3.svg" />
+          <img
+            class="spike-side"
+            [class]="match.teams[0].isAttacking ? 'spike-left' : 'spike-right'"
+            *ngIf="match.roundPhase !== 'shopping' || match.roundPhase === 'end'"
+            src="/assets/topscore/spikeSide.svg"
+          />
+          <img
+            class="spike"
+            *ngIf="
+              match.roundPhase === 'end' ||
+              (match.roundPhase === 'combat' &&
+                !match.spikeState.planted &&
+                !match.spikeState.detonated &&
+                !match.spikeState.defused)
             "
-          ></div>
+            src="/assets/topscore/spike.svg"
+          />
+          <img class="vector11" src="/assets/topscore/overlay9.svg" />
+          <img class="vector15" src="/assets/topscore/overlay1.svg" />
         </div>
       </div>
     </div>
@@ -83,9 +153,11 @@
     >
       <img
         class="spike-icon"
-        src="../../assets/misc/Spike_top_{{ blinkState ? 'light' : 'dark' }}.svg"
+        src="/assets/misc/Spike_top_{{ blinkState ? 'light' : 'dark' }}.svg"
       />
     </div>
   </div>
-  <div class="round-number">ROUND {{ match.roundNumber }}</div>
+  <div class="round-numberBox">
+    <div class="round-number">ROUND {{ match.roundNumber }}</div>
+  </div>
 </div>

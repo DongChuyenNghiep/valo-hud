@@ -15,13 +15,11 @@
 
 .agent-icon {
   z-index: 1;
-  background-size: cover;
-  background-position: 50% 50%;
-  position: absolute;
+  background-size: 150%; /* Tăng giá trị này để zoom */
+  background-position: center;
   aspect-ratio: 1;
-  height: 100%;
+  height: 27px;
   top: 0;
-
   &.dead {
     @extend .agent-icon;
     filter: grayscale(1);
@@ -38,15 +36,15 @@
 
 .utility-container {
   align-items: flex-start;
-  padding: 0px 0px 4px 18px;
   display: flex;
   flex-direction: column;
-  width: 186px;
+  width: 160px;
   height: 74px;
   justify-content: flex-end;
   gap: 4px;
   position: relative;
   border: 0px none;
+  align-items: center;
 
   &.attacker {
     @extend .utility-container;
@@ -54,8 +52,8 @@
       90deg,
       rgba(var(--attacker-color-secondary-rgb), 0.5) 0%,
       rgba(var(--attacker-color-rgb), 0.3) 58.5%,
-      rgba(var(--attacker-color-rgb), 0.01) 90.5%,
-      rgba(0, 0, 0, 0) 100%
+      rgba(var(--attacker-color-rgb), 0.15) 100%,
+
     );
   }
 
@@ -64,9 +62,9 @@
     background: linear-gradient(
       90deg,
       rgba(var(--defender-color-shield-currency-rgb), 0.5) 0%,
-      rgba(var(--defender-color-rgb), 0.2) 58.5%,
-      rgba(var(--defender-color-rgb), 0.01) 90.5%,
-      rgba(0, 0, 0, 0) 100%
+      rgba(var(--defender-color-rgb), 0.3) 58.5%,
+      rgba(var(--defender-color-rgb), 0.15) 100%,
+
     );
   }
 
@@ -74,9 +72,9 @@
     @extend .utility-container;
     flex-direction: row;
     gap: 6px;
-    padding-left: 12px;
+    padding-left: 0px;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
   }
 }
 
@@ -91,7 +89,7 @@
 
 .weapon-icon {
   position: relative;
-  height: 32px;
+  height: 22px;
   object-fit: cover;
   transform: rotateY(180deg);
 }
@@ -99,11 +97,11 @@
 .ultimate-tracker-container {
   display: inline-flex;
   height: 21.33px;
-  width: 67%;
+  width: 100%;
   align-items: center;
   gap: 20px;
   position: relative;
-  // justify-content: center;
+  justify-content: center;
 }
 
 .spike-icon-wrapper {
@@ -117,12 +115,12 @@
 
 .spike-icon {
   position: relative;
-  width: 30px;
+  width: 26px;
   aspect-ratio: 1;
 }
 
 .ultimate-tracker {
-  width: 60%;
+
   display: inline-flex;
   align-items: center;
   gap: 1px;
@@ -131,6 +129,48 @@
   justify-content: center;
 }
 
+.ultimate-tracker {
+  position: absolute;
+  width: 36px; /* Giữ kích thước nhỏ hơn pip-circle một chút */
+  height: 36px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pip-circle {
+  position: absolute;
+  width: 30px; /* Điều chỉnh phù hợp */
+  height: 30px;
+  top: 110%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+}
+
+.pip-ultimate2 {
+  position: absolute;
+  width: 10px;
+  height: 4px;
+  background-image: url(/assets/misc/test1.svg);
+  background-size: cover;
+  transform-origin: center; /* Giúp xoay quanh tâm */
+}
+
+.pip-ultimate-full2 {
+  background-image: url(/assets/misc/test2.svg);
+}
+
+.ultimate-full-image {
+  width: 100%; /* Đảm bảo hình ảnh vừa khít */
+  height: auto;
+  max-width: 22px; /* Điều chỉnh kích thước để nằm trong vòng tròn */
+  max-height: 22px;
+
+}
 .pip-ultimate {
   position: relative;
   width: 10px;
@@ -147,8 +187,8 @@
 
 .ultimate-full-image {
   width: 25px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: -27px;
+  margin-right: 20px;
 }
 
 .rank-icon-container {
@@ -178,32 +218,23 @@
 .player-info {
   display: flex;
   flex-direction: column;
-  width: 160px;
-  height: 76px;
+  width: 330px;
+  height: 75px;
   align-items: flex-start;
-  justify-content: flex-end;
-  gap: 4px;
-  padding: 0px 0px 2px 32px;
+  justify-content: flex-start;
+  row-gap: 2px;
+  column-gap: 4px;
+  padding: 0px 0px 2px 0px;
   position: relative;
 
   &.defender {
     @extend .player-info;
-    background: linear-gradient(
-        90deg,
-        rgba(var(--defender-color-rgb), 0.3) 0%,
-        rgba(var(--defender-color-rgb), 0) 100%
-      ),
-      rgba(15, 25, 35, 0.6);
+    background-color: rgba(15, 25, 35, 0.8);
   }
 
   &.attacker {
     @extend .player-info;
-    background: linear-gradient(
-        90deg,
-        rgba(var(--attacker-color-rgb), 0.5) 0%,
-        rgba(var(--attacker-color-rgb), 0) 100%
-      ),
-      rgba(15, 25, 35, 0.6);
+    background-color: rgba(15, 25, 35, 0.8);
   }
 
   &.observed {
@@ -224,11 +255,8 @@
 }
 
 .spectator-icon-container {
-  position: absolute;
-  top: 0;
   width: 18px;
   height: 20px;
-  right: 3px;
 }
 
 .spectator-icon {
@@ -246,8 +274,7 @@
   align-self: stretch;
   width: 100%;
   flex: 0 0 auto;
-  top: -4px;
-  left: 5px;
+
 
   &.minimal {
     @extend .info-container;
@@ -261,6 +288,7 @@
   align-items: flex-end;
   gap: 6px;
   position: relative;
+  justify-content: center;
 }
 
 .captain-icon {
@@ -276,6 +304,7 @@
   gap: 2px;
   position: relative;
   flex: 0 0 auto;
+  margin-right: 2%;
 }
 
 .valorant-credits {
@@ -301,7 +330,7 @@
   opacity: 0.8;
   font-family: "Montserrat", Helvetica;
   font-weight: 700;
-  font-size: 11px;
+  font-size: 16px;
   text-align: center;
   letter-spacing: 0;
   line-height: normal;
@@ -320,9 +349,7 @@
 
 .username-container {
   display: inline-flex;
-  height: 15px;
   align-items: center;
-  gap: 4px;
   position: relative;
 }
 
@@ -353,28 +380,31 @@
 .stats-title {
   @extend .currency-title;
   color: white;
+  font-size: 14px;
 }
 
 .stats-content {
   @extend .username-title;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 app-shield-icon {
   position: relative;
-  width: 22px;
-  height: 22px;
+  width: 12px;
+  height: 12px;
   flex: 0 0 auto;
+  color: white;
 }
 
 .health-container {
-  display: inline-flex;
-  height: 20px;
+  display: flex;
+  flex-direction: column;
   width: 62px;
   align-items: center;
-  gap: 4px;
   position: relative;
   overflow: hidden;
+  gap: 9px;
+  top: 22px;
 
   &.right {
     @extend .health-container;
@@ -388,25 +418,25 @@ app-shield-icon {
   opacity: 0.8;
   font-family: "Montserrat", Helvetica;
   font-weight: 800;
-  font-size: 20px;
+  font-size: 16px;
   text-align: center;
   letter-spacing: 0;
   line-height: normal;
   white-space: nowrap;
-
+  text-align: center;
   &.attacker {
     @extend .health-amount;
-    color: var(--attacker-color-shield-currency);
+    color: white;
   }
 
   &.defender {
     @extend .health-amount;
-    color: var(--defender-color-shield-currency);
+    color: white;
   }
 }
 
 .health-bar {
-  position: absolute;
+
   height: 3px;
   left: 0;
   bottom: 0;

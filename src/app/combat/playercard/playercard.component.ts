@@ -42,6 +42,11 @@ const componentAnimations = [
   ]),
 ];
 
+interface Pip {
+  isFull: boolean;
+  index: number;
+}
+
 @Component({
   selector: "app-playercard",
   templateUrl: "./playercard.component.html",
@@ -54,7 +59,7 @@ export class InhouseTrackerPlayercardComponent {
   @Input() match!: any;
   @Input() color!: "attacker" | "defender";
   @Input() side!: "left" | "right";
-
+  @Input() hideAuxiliary = false;
   private _player: any;
 
   constructor(private config: Config) {}
@@ -89,6 +94,34 @@ export class InhouseTrackerPlayercardComponent {
   getAgentName(agent: string) {
     return AgentNameService.getAgentName(agent);
   }
+
+  getPips(): Pip[] {
+    const pips: Pip[] = [];
+    const maxUltPoints = this.player.maxUltPoints;
+    const currUltPoints = this.player.currUltPoints;
+
+    for (let i = 0; i < currUltPoints; i++) {
+      pips.push({ isFull: true, index: i });
+    }
+
+    for (let i = currUltPoints; i < maxUltPoints; i++) {
+      pips.push({ isFull: false, index: i });
+    }
+
+    return pips;
+  }
+
+  getPipPosition(index: number, total: number): string {
+    if (total <= 1) return "translate(0, 0)";
+  
+    const angle = (360 / total) * index - 90; // Trừ 90 độ để bắt đầu từ hướng 12 giờ
+    const radius = 17;
+    const x = radius * Math.cos((angle * Math.PI) / 180);
+    const y = radius * Math.sin((angle * Math.PI) / 180);
+  
+    return `translate(${x}px, ${y}px) rotate(${angle + 90}deg)`; // Vẫn xoay lại pip như cũ
+  }
+  
 }
 
 @Component({

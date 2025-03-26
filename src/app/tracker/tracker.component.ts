@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { trigger, transition, style, animate } from "@angular/animations";
 import { ActivatedRoute } from "@angular/router";
 import { AutoswitchComponent } from "../autoswitch/autoswitch.component";
@@ -16,6 +16,7 @@ import { AutoswitchComponent } from "../autoswitch/autoswitch.component";
   ],
 })
 export class TrackerComponent implements OnInit {
+  @Input() hideAuxiliary = false;
   activelyTracking = false;
   currentTrackId: string | null = null;
   match: any = null;
@@ -54,6 +55,14 @@ export class TrackerComponent implements OnInit {
           logoUrl: "",
           backdropUrl: "",
         },
+        timeoutDuration: 60,
+      },
+      timeoutState: {
+        techPause: false,
+        leftTeam: false,
+        leftTeamStartTime: 0,
+        rightTeam: false,
+        rightTeamStartTime: 0,
       },
     };
 

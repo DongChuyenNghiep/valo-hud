@@ -1,6 +1,7 @@
 {
-  "serverEndpoint": "http://localhost:5200",
-  "sponsorImageUrls": ["/assets/misc/logo.webp"],
+  "serverEndpoint": "http://localhost:5200/",
+  "redirectUrl": "https://valospectra.com",
+  "sponsorImageUrls": ["/assets/misc/logo.webp","/assets/misc/PN.png","/assets/misc/icon.webp","/assets/misc/logo_spectra.webp"],
   "sponsorImageRotateSpeed": 5000,
   "attackerColorPrimary": "#b82e3c",
   "attackerColorSecondary": "#ff4557",

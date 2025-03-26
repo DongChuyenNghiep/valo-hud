@@ -48,7 +48,7 @@ export class PlayerControllerComponent implements OnDestroy {
 
   static playerNameIndex = [0, 0];
   static playerNameOrder = [
-    ["Voodoo One", "Twoperator", "ThreeOfLife", "Fourcefield", "FIVEbyFIVE"],
+    ["DCN Kero", "DCN Lu", "DCN Beacon", "DCN Gudako", "DCN LilJohn"],
     ["AlpacaHoarder", "BeeSting", "CowTipper", "DodoDaniel", "Eeliminator"],
   ];
 
